@@ -1,2 +1,2 @@
 # wttrbot
-Weather bot wttr.in
+Weather bot https://wttr.in/
