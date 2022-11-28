@@ -27,7 +27,7 @@ def get_sizes(tablica: str, font: ImageFont) -> tuple:
 
 def picture(text: str):
     font = ImageFont.truetype(
-        "/usr/share/fonts/liberation/LiberationMono-Regular.ttf", size=25
+        "LiberationMono-Regular.ttf", size=25
     )
     img = Image.new("RGBA", get_sizes(text, font), "#0e1621")
     idraw = ImageDraw.Draw(img)
