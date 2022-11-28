@@ -4,6 +4,7 @@ from pathlib import Path
 
 from aiopywttr import Wttr
 import pywttr_models
+import warnings
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.files import PickleStorage
 from aiogram.dispatcher import FSMContext
@@ -16,11 +17,11 @@ from config import API_TOKEN
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot, storage=PickleStorage(Path("states.json")))
-
+warnings.simplefilter("ignore", DeprecationWarning)
 
 def get_sizes(tablica: str, font: ImageFont) -> tuple:
     spl = tablica.splitlines()
-    w = sum(font.getsize(letter)[0] for letter in spl[0])
+    w = sum(font.getsize(letter)[0] for letter in spl[0]) 
     h = sum(font.getsize(line[0])[1] for line in spl)
     return w, h
 
