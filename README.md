@@ -1,5 +1,9 @@
 # wttrbot
 
+## Description
+
+Weather bot from [wttr.in](https://wttr.in/).
+
 ## Installation and usage
 
 - Download and unpack [the archive with the program](https://github.com/nehuby/wttrbot/archive/refs/heads/main.zip).
