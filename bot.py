@@ -1,35 +1,37 @@
 import logging
+import os
+import warnings
 from io import BytesIO
 from pathlib import Path
 
-from aiopywttr import Wttr
 import pywttr_models
-import warnings
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.files import PickleStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiohttp.client_exceptions import ClientResponseError
+from aiopywttr import Wttr
+from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont
 from prettytable import PrettyTable
-from config import API_TOKEN
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=os.environ["API_TOKEN"])
 dp = Dispatcher(bot, storage=PickleStorage(Path("states.json")))
 warnings.simplefilter("ignore", DeprecationWarning)
 
+
 def get_sizes(tablica: str, font: ImageFont) -> tuple:
     spl = tablica.splitlines()
-    w = sum(font.getsize(letter)[0] for letter in spl[0]) 
+    w = sum(font.getsize(letter)[0] for letter in spl[0])
     h = sum(font.getsize(line[0])[1] for line in spl)
     return w, h
 
 
 def picture(text: str):
-    font = ImageFont.truetype(
-        "LiberationMono-Regular.ttf", size=25
-    )
+    font = ImageFont.truetype("LiberationMono-Regular.ttf", size=25)
     img = Image.new("RGBA", get_sizes(text, font), "#0e1621")
     idraw = ImageDraw.Draw(img)
     idraw.text((0, 0), text, "white", font=font)
