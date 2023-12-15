@@ -1,6 +1,6 @@
 aiogram == 3.1.1
 aiopywttr == 2.2.1
-Pillow == 10.0.0
+Pillow == 10.0.1
 prettytable == 3.7.0
 pywttr-models == 1.1.1 
 python-dotenv == 1.0.0 
