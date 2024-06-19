@@ -1,4 +1,4 @@
-aiogram == 3.4.1
+aiogram == 3.8.0
 aiopywttr == 2.2.1
 Pillow == 10.3.0
 prettytable == 3.10.0
